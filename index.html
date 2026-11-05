@@ -3,49 +3,161 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SADUQ — تحميل التطبيقات</title>
-<meta name="description" content="تحميل تطبيقات SADUQ لأندرويد: CRM وAdmin وHR وAccounts.">
+<title>SADUQ — Android apps</title>
+<meta name="description" content="SADUQ: four Android apps for attendance, HR, accounts and company oversight. تطبيقات SADUQ لأندرويد.">
+<link rel="icon" href="assets/crm.png">
 <style>
-:root{--bg:#0d1014;--card:#151a21;--line:#2a313c;--ink:#fff;--mute:#9aa4b2;--lime:#c6f432;--teal:#00d9a6;color-scheme:dark}
+:root{--bg:#0d1014;--bg2:#12161c;--card:#151a21;--line:#2a313c;--ink:#fff;--text:#d7dde6;--mute:#9aa4b2;--lime:#c6f432;--teal:#00d9a6;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Segoe UI",Tahoma,sans-serif;line-height:1.7}
-main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
-.logo{display:block;height:44px;margin:8px 0 28px}
-h1{font-size:28px;margin:0 0 8px}
-p.lead{color:var(--mute);margin:0 0 28px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Segoe UI",Tahoma,sans-serif;line-height:1.75}
+html[lang=ar] .en,html[lang=en] .ar{display:none!important}
+a{color:inherit}
+.skip{position:absolute;inset-inline-start:8px;top:-60px;background:var(--lime);color:#0d1014;padding:8px 14px;border-radius:10px;z-index:10}
+.skip:focus{top:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:rgba(13,16,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:18px;height:64px}
+header img{height:28px;display:block}
+nav{display:flex;gap:18px;margin-inline-start:auto;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+.lang{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.lang:hover,.lang:focus-visible{border-color:var(--teal)}
+@media(max-width:560px){nav{display:none}.lang{margin-inline-start:auto}}
+.hero{padding:72px 0 56px;display:grid;gap:36px;grid-template-columns:1.1fr .9fr;align-items:center}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:40px}}
+.eyebrow{color:var(--teal);font-weight:700;letter-spacing:.08em;font-size:13px;text-transform:uppercase}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.15;color:var(--ink);margin:10px 0 16px}
+.lead{font-size:18px;color:var(--mute);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:14px;padding:13px 22px}
+.btn.p{background:var(--lime);color:#0d1014}
+.btn.s{border:1px solid var(--line);color:var(--ink)}
+.btn:focus-visible,.btn:hover{outline:3px solid var(--teal);outline-offset:2px}
+.phones{display:flex;gap:14px;justify-content:center}
+.phones img{width:46%;border-radius:22px;border:1px solid var(--line);display:block}
+.phones img:nth-child(2){margin-top:34px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;color:var(--ink);margin:0 0 10px}
+.sub{color:var(--mute);margin:0 0 30px;max-width:40em}
+.feat{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.f{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.f img{width:48px;height:48px;border-radius:12px;display:block;margin-bottom:12px}
+.f h3{margin:0 0 6px;color:var(--ink);font-size:18px;direction:ltr;text-align:start}
+.f p{margin:0;color:var(--mute);font-size:15px}
+.shots{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+figure{margin:0}
+figure img{width:100%;border-radius:20px;border:1px solid var(--line);display:block}
+figcaption{margin-top:10px;color:var(--mute);font-size:14px;text-align:center}
+.dl{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 .app{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:14px;align-items:center}
 .app img{width:56px;height:56px;border-radius:14px;flex:none}
 .app>div{min-width:0}
-.app h2{font-size:18px;margin:0;direction:ltr;text-align:start;overflow-wrap:anywhere}
-@media(max-width:360px){.app{padding:12px;gap:10px}.app img{width:44px;height:44px}.app a{padding:10px 12px}.app h2{font-size:16px}}
+.app h3{font-size:18px;margin:0;color:var(--ink);direction:ltr;text-align:start;overflow-wrap:anywhere}
 .app small{color:var(--mute);display:block}
 .app a{margin-inline-start:auto;background:var(--lime);color:#0d1014;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:12px;white-space:nowrap}
 .app a:focus-visible,.app a:hover{outline:3px solid var(--teal);outline-offset:2px}
-h3{margin:34px 0 8px;color:var(--teal)}
-ol{padding-inline-start:20px;color:#d7dde6}
-.note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--mute);margin-top:22px}
+ol{padding-inline-start:22px;margin:0}
+.note{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:22px;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:30px 0 48px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+footer img{height:22px}
 </style>
 </head>
 <body>
-<main>
-<img class="logo" src="assets/logo.png" alt="SADUQ">
-<h1>تحميل التطبيقات</h1>
-<p class="lead">نسخة تجريبية لأجهزة أندرويد. اختر التطبيق المناسب لدورك.</p>
-<div class="grid">
-  <div class="app"><img src="assets/crm.png" alt=""><div><h2>SADUQ CRM</h2><small>الموظفون: الحضور والطلبات</small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-crm.apk">تحميل</a></div>
-  <div class="app"><img src="assets/hr.png" alt=""><div><h2>SADUQ HR</h2><small>الموارد البشرية</small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-hr.apk">تحميل</a></div>
-  <div class="app"><img src="assets/accounts.png" alt=""><div><h2>SADUQ Accounts</h2><small>الحسابات والفواتير</small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-accounts.apk">تحميل</a></div>
-  <div class="app"><img src="assets/admin.png" alt=""><div><h2>SADUQ Admin</h2><small>مدير النظام</small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-admin.apk">تحميل</a></div>
-</div>
-<h3>طريقة التثبيت</h3>
-<ol>
-  <li>اضغط «تحميل» من موبايل أندرويد.</li>
-  <li>لو ظهر تحذير، اسمح بالتثبيت من هذا المصدر.</li>
-  <li>افتح الملف المحمّل واضغط «تثبيت».</li>
-  <li>سجّل الدخول ببيانات الدخول التي أرسلتها لك الإدارة.</li>
-</ol>
-<div class="note">هذه نسخة تجريبية مستقلة. التطبيقات تعمل فقط حين يكون خادم التجربة شغّالًا. للأيفون غير متاحة حاليًا.</div>
+<a class="skip" href="#main"><span class="ar">تخطَّ إلى المحتوى</span><span class="en">Skip to content</span></a>
+<header>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="SADUQ">
+    <nav aria-label="Sections">
+      <a href="#features"><span class="ar">المميزات</span><span class="en">Features</span></a>
+      <a href="#screens"><span class="ar">اللقطات</span><span class="en">Screens</span></a>
+      <a href="#download"><span class="ar">التحميل</span><span class="en">Download</span></a>
+    </nav>
+    <button class="lang" id="lang" type="button"><span class="ar">English</span><span class="en">العربية</span></button>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">SADUQ · Android</div>
+      <h1><span class="ar">الشركة كلها في أربعة تطبيقات.</span><span class="en">Your whole company in four apps.</span></h1>
+      <p class="lead"><span class="ar">الحضور والانصراف، الطلبات والإجازات، الموارد البشرية، الحسابات والفواتير، ومتابعة مدير النظام — كل دور له تطبيقه بنفس الهوية.</span><span class="en">Attendance, requests and leave, HR, accounts and invoices, and system-admin oversight — one app per role, one consistent look.</span></p>
+      <div class="cta">
+        <a class="btn p" href="#download"><span class="ar">حمّل التطبيقات</span><span class="en">Download the apps</span></a>
+        <a class="btn s" href="#features"><span class="ar">شاهد المميزات</span><span class="en">See the features</span></a>
+      </div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <img class="ar" src="assets/shot-hr-ar.png" alt=""><img class="ar" src="assets/shot-accounts-ar.png" alt="">
+      <img class="en" src="assets/shot-hr-en.png" alt=""><img class="en" src="assets/shot-accounts-en.png" alt="">
+    </div>
+  </div>
+
+  <section id="features">
+    <h2><span class="ar">لكل دور تطبيقه</span><span class="en">One app for every role</span></h2>
+    <p class="sub"><span class="ar">أربعة تطبيقات مستقلة، تعمل مع بعضها على نفس بيانات الشركة.</span><span class="en">Four standalone apps working together on the same company data.</span></p>
+    <div class="feat">
+      <div class="f"><img src="assets/crm.png" alt=""><h3>SADUQ CRM</h3><p><span class="ar">للموظفين: تسجيل الحضور والانصراف، طلب الإجازات والأذونات، ومتابعة الطلبات.</span><span class="en">For employees: check in and out, request leave and permits, and track requests.</span></p></div>
+      <div class="f"><img src="assets/hr.png" alt=""><h3>SADUQ HR</h3><p><span class="ar">للموارد البشرية: حضور اليوم، الطلبات المعلّقة، الموظفون والورديات.</span><span class="en">For HR: today's attendance, pending requests, staff and shifts.</span></p></div>
+      <div class="f"><img src="assets/accounts.png" alt=""><h3>SADUQ Accounts</h3><p><span class="ar">للحسابات: العملاء والفواتير والمشتريات والتقارير المالية.</span><span class="en">For accounts: clients, invoices, purchases and financial reports.</span></p></div>
+      <div class="f"><img src="assets/admin.png" alt=""><h3>SADUQ Admin</h3><p><span class="ar">لمدير النظام: إيرادات الشركة، الصلاحيات، الأمان، وقرارات الطلبات.</span><span class="en">For the system admin: company revenue, permissions, security and request decisions.</span></p></div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <h2><span class="ar">لقطات من التطبيقات</span><span class="en">Screens</span></h2>
+    <p class="sub"><span class="ar">كل الأسماء والأرقام في اللقطات بيانات تجريبية.</span><span class="en">All names and numbers shown are demo data.</span></p>
+    <div class="shots">
+      <figure><img class="ar" src="assets/shot-login.png" alt="شاشة الدخول"><img class="en" src="assets/shot-login.png" alt="Sign-in screen"><figcaption><span class="ar">الدخول</span><span class="en">Sign in</span></figcaption></figure>
+      <figure><img class="ar" src="assets/shot-crm-ar.png" alt="رئيسية الموظف"><img class="en" src="assets/shot-crm-en.png" alt="Employee home"><figcaption><span class="ar">الموظف</span><span class="en">Employee</span></figcaption></figure>
+      <figure><img class="ar" src="assets/shot-hr-ar.png" alt="رئيسية الموارد البشرية"><img class="en" src="assets/shot-hr-en.png" alt="HR home"><figcaption><span class="ar">الموارد البشرية</span><span class="en">HR</span></figcaption></figure>
+      <figure><img class="ar" src="assets/shot-accounts-ar.png" alt="رئيسية الحسابات"><img class="en" src="assets/shot-accounts-en.png" alt="Accounts home"><figcaption><span class="ar">الحسابات</span><span class="en">Accounts</span></figcaption></figure>
+      <figure><img class="ar" src="assets/shot-admin-ar.png" alt="رئيسية مدير النظام"><img class="en" src="assets/shot-admin-en.png" alt="Admin home"><figcaption><span class="ar">مدير النظام</span><span class="en">System admin</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="download">
+    <h2><span class="ar">التحميل</span><span class="en">Download</span></h2>
+    <p class="sub"><span class="ar">لأجهزة أندرويد. اختر التطبيق المناسب لدورك.</span><span class="en">For Android devices. Pick the app for your role.</span></p>
+    <div class="dl">
+      <div class="app"><img src="assets/crm.png" alt=""><div><h3>SADUQ CRM</h3><small><span class="ar">الموظفون</span><span class="en">Employees</span></small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-crm.apk"><span class="ar">تحميل</span><span class="en">Download</span></a></div>
+      <div class="app"><img src="assets/hr.png" alt=""><div><h3>SADUQ HR</h3><small><span class="ar">الموارد البشرية</span><span class="en">Human resources</span></small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-hr.apk"><span class="ar">تحميل</span><span class="en">Download</span></a></div>
+      <div class="app"><img src="assets/accounts.png" alt=""><div><h3>SADUQ Accounts</h3><small><span class="ar">الحسابات</span><span class="en">Accounts</span></small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-accounts.apk"><span class="ar">تحميل</span><span class="en">Download</span></a></div>
+      <div class="app"><img src="assets/admin.png" alt=""><div><h3>SADUQ Admin</h3><small><span class="ar">مدير النظام</span><span class="en">System admin</span></small></div><a href="https://github.com/Memo560/saduq-app/releases/latest/download/SADUQ-admin.apk"><span class="ar">تحميل</span><span class="en">Download</span></a></div>
+    </div>
+    <h2 style="margin-top:44px;font-size:22px"><span class="ar">طريقة التثبيت</span><span class="en">How to install</span></h2>
+    <ol>
+      <li><span class="ar">اضغط «تحميل» من موبايل أندرويد.</span><span class="en">Tap “Download” on an Android phone.</span></li>
+      <li><span class="ar">لو ظهر تحذير، اسمح بالتثبيت من هذا المصدر.</span><span class="en">If prompted, allow installs from this source.</span></li>
+      <li><span class="ar">افتح الملف المحمّل واضغط «تثبيت».</span><span class="en">Open the downloaded file and tap “Install”.</span></li>
+      <li><span class="ar">سجّل الدخول ببيانات الدخول التي أرسلتها لك الإدارة.</span><span class="en">Sign in with the credentials your admin sent you.</span></li>
+    </ol>
+    <div class="note"><span class="ar">نسخة تجريبية مستقلة، غير منشورة على Google Play. تعمل فقط حين يكون خادم التجربة شغّالًا. غير متاحة للأيفون حاليًا.</span><span class="en">An independent test build, not on Google Play. It works only while the test server is running. Not available for iPhone yet.</span></div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="SADUQ">
+    <span>© 2026 SADUQ</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('lang');
+  function apply(l){root.lang=l;root.dir=l==='ar'?'rtl':'ltr';document.title=l==='ar'?'SADUQ — تطبيقات أندرويد':'SADUQ — Android apps';}
+  var saved=null;try{saved=localStorage.getItem('saduq-lang');}catch(e){}
+  apply(saved==='en'||saved==='ar'?saved:(/^ar/i.test(navigator.language||'')?'ar':'en'));
+  btn.addEventListener('click',function(){
+    var l=root.lang==='ar'?'en':'ar';apply(l);
+    try{localStorage.setItem('saduq-lang',l);}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
