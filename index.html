@@ -13,10 +13,12 @@ main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
 .logo{display:block;height:44px;margin:8px 0 28px}
 h1{font-size:28px;margin:0 0 8px}
 p.lead{color:var(--mute);margin:0 0 28px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
 .app{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:14px;align-items:center}
 .app img{width:56px;height:56px;border-radius:14px;flex:none}
-.app h2{font-size:18px;margin:0}
+.app>div{min-width:0}
+.app h2{font-size:18px;margin:0;direction:ltr;text-align:start;overflow-wrap:anywhere}
+@media(max-width:360px){.app{padding:12px;gap:10px}.app img{width:44px;height:44px}.app a{padding:10px 12px}.app h2{font-size:16px}}
 .app small{color:var(--mute);display:block}
 .app a{margin-inline-start:auto;background:var(--lime);color:#0d1014;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:12px;white-space:nowrap}
 .app a:focus-visible,.app a:hover{outline:3px solid var(--teal);outline-offset:2px}
