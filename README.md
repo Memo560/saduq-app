@@ -1,3 +1,3 @@
 # SADUQ
 
-تحميل تطبيقات SADUQ لأندرويد (نسخة تجريبية): https://memo560.github.io/saduq-app/
+Android app downloads (test build): https://saduq-app.pages.dev/
